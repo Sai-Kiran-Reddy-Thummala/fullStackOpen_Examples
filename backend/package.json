@@ -13,7 +13,6 @@
     "build:ui": "@powershell Remove-Item -Recurse -Force dist && cd ../frontend && npm run build && @powershell Copy-Item dist -Recurse ../backend"
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^5.1.0"
   }
 }
