@@ -1,0 +1,16 @@
+Class selectors:
+
+A class selector definition always starts with a period and contains the name of the class.
+
+Classes are attributes, which can be added to HTML elements.
+
+class selector example:
+
+.container {
+  padding: 10px;
+  border: 1px solid;
+}
+
+.notes {
+  color: blue;
+}
