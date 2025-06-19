@@ -33,11 +33,13 @@
 // console.log(`Server is running on port ${PORT}`)
 
 const express = require('express')
+const Note = require('./models/note')
 const app = express()
+
 //const cors = require('cors')
+// app.use(cors())
 
 app.use(express.static('dist'))
-// app.use(cors())
 app.use(express.json())
 
 const requestLogger = (request,response,next) => {
@@ -50,30 +52,32 @@ const requestLogger = (request,response,next) => {
 
 app.use(requestLogger)
 
-let notes = [
-  {
-    id: "1",
-    content: "HTML is easy",
-    important: true
-  },
-  {
-    id: "2",
-    content: "Browser can execute only JavaScript",
-    important: false
-  },
-  {
-    id: "3",
-    content: "GET and POST are the most important methods of HTTP protocol",
-    important: true
-  }
-]
+// let notes = [
+//   {
+//     id: "1",
+//     content: "HTML is easy",
+//     important: true
+//   },
+//   {
+//     id: "2",
+//     content: "Browser can execute only JavaScript",
+//     important: false
+//   },
+//   {
+//     id: "3",
+//     content: "GET and POST are the most important methods of HTTP protocol",
+//     important: true
+//   }
+// ]
 
 app.get('/',(request,response) => {
     response.send('<h1>Hello World!</h1>')
 })
 
 app.get('/api/notes',(request,response) => {
+  Note.find({}).then(notes => {
     response.json(notes)
+  })
 })
 
 app.get('/api/notes/:id',(request,response) => {
